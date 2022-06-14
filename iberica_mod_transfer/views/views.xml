@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="herencia_module_sp">
+      <field name="name">herencia list stok</field>
+      <field name="model">stock.picking</field>
+      <field name="inherit_id" ref="stock.view_picking_form" />
+      <field name="arch" type="xml">
+        
+        <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='quantity_done']" position = "after">
+		    	<field name="peso_bruto"/>
+          <!--field name="metros"/-->
+          <field name="peso_neto"/>
+          <field name="tara"/>
+
+          <field name="peso_bruto_x" invisible="1"/>
+          <field name="peso_neto_x" invisible="1"/>
+		    </xpath>
+        <!--xpath expr = "//field[@name='line_ids']/tree/field[@name='account_id']" position = "before" >
+          <field name="unidad"/>
+          <field name="metros"/>
+          <field name="cajas"/>
+
+          <field name="unidad_x" invisible="1"/>
+          <field name="metros_x" invisible="1"/>
+          <field name="cajas_x" invisible="1"/>
+        </xpath-->
+      </field>
+    </record>
+  </data>
+</odoo>

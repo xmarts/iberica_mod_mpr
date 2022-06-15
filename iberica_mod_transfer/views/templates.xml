@@ -1,24 +1,26 @@
 <odoo>
     <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
-            </t>
-          </dl>
-        </template>
--->
+      <record model="ir.ui.view" id="herencia_module_rp">
+        <field name="name">herencia list stok</field>
+        <field name="model">stock.quant.package</field>
+        <field name="inherit_id" ref="stock.view_quant_package_form" />
+        <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='location_id']" position = "after">
+
+            <field name="peso_bruto"/>
+
+          </xpath>
+          <!--xpath expr = "//field[@name='line_ids']/tree/field[@name='account_id']" position = "before" >
+            <field name="unidad"/>
+            <field name="metros"/>
+            <field name="cajas"/>
+      attrs="{'invisible': [('product_id.categ_id', '=', False)]}"
+            <field name="unidad_x" invisible="1"/>
+            <field name="metros_x" invisible="1"/>
+            <field name="cajas_x" invisible="1"/>
+          </xpath-->
+        </field>
+      </record>
     </data>
 </odoo>

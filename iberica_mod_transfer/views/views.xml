@@ -7,12 +7,12 @@
       <field name="model">stock.picking</field>
       <field name="inherit_id" ref="stock.view_picking_form" />
       <field name="arch" type="xml">
-        
-        <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='quantity_done']" position = "after">
-		    	<field name="peso_bruto"/>
-          <!--field name="metros"/-->
-          <field name="peso_neto"/>
+
+        <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='quantity_done']" position = "before">
           <field name="tara"/>
+		    	<field name="peso_bruto"/>
+          <field name="peso_neto" />
+
 
           <field name="peso_bruto_x" invisible="1"/>
           <field name="peso_neto_x" invisible="1"/>
@@ -21,7 +21,7 @@
           <field name="unidad"/>
           <field name="metros"/>
           <field name="cajas"/>
-
+attrs="{'invisible': [('product_id.categ_id', '=', False)]}"
           <field name="unidad_x" invisible="1"/>
           <field name="metros_x" invisible="1"/>
           <field name="cajas_x" invisible="1"/>

@@ -8,7 +8,7 @@
       <field name="inherit_id" ref="stock.view_picking_form" />
       <field name="arch" type="xml">
 
-        <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='quantity_done']" position = "before">
+        <xpath expr="//field[@name='move_line_nosuggest_ids']/tree/field[@name='qty_done']" position = "before">
           <field name="tara"/>
 		    	<field name="peso_bruto"/>
           <field name="peso_neto" />

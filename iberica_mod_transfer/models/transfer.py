@@ -12,5 +12,6 @@ class Picking(models.Model):
 
     @api.onchange('shipping_weight')
     def _traer_datos(self):
-        if self.shipping_weight:
+        if self.name:
+            self.shipping_weight = self.env['stock.move.line'].browse(vals.get('peso_bruto'))
             self.peso_bruto = self.shipping_weight

@@ -12,15 +12,34 @@
           <field name="tara"/>
 		    </xpath>
 
-        <xpath expr="//field[@name='move_line_nosuggest_ids']" position = "inside">
+
+        <!--xpath expr = "//field[@name='line_ids']/tree/field[@name='account_id']" position = "before" >
+          <field name="unidad"/>
+          <field name="metros"/>
+          <field name="cajas"/>
+attrs="{'invisible': [('product_id.categ_id', '=', False)]}"
+          <field name="unidad_x" invisible="1"/>
+          <field name="metros_x" invisible="1"/>
+          <field name="cajas_x" invisible="1"/>
+        </xpath-->
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="herencia_module_sp">
+      <field name="name">herencia list stok</field>
+      <field name="model">stock.move.line</field>
+      <field name="inherit_id" ref="stock.view_move_line_tree" />
+      <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='qty_done']" position = "before">
           <field name="tara" invisible="1"/>
-		    	<field name="peso_bruto"/>
+          <field name="peso_bruto"/>
           <field name="peso_neto" />
 
 
           <field name="peso_bruto_x" invisible="1"/>
           <field name="peso_neto_x" invisible="1"/>
-		    </xpath>
+        </xpath>
         <!--xpath expr = "//field[@name='line_ids']/tree/field[@name='account_id']" position = "before" >
           <field name="unidad"/>
           <field name="metros"/>

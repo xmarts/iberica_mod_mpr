@@ -12,7 +12,7 @@
           <field name="tara"/>
 		    </xpath>
 
-        <xpath expr="//field[@name='move_line_nosuggest_ids']/tree/field[@name='qty_done']" position = "before">
+        <xpath expr="//field[@name='move_line_nosuggest_ids']" position = "inside">
           <field name="tara" invisible="1"/>
 		    	<field name="peso_bruto"/>
           <field name="peso_neto" />

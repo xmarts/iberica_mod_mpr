@@ -20,7 +20,7 @@ class Picking(models.Model):
                 self.tara = line.picking_id.tara
                 self.peso_bruto_x = line.product_id.weight
                 if self.product_id.categ_id != 2 :
-                    self.peso_neto_x = self.peso_bruto_x * self.quantity_done
+                    self.peso_neto_x = self.peso_bruto_x * self.qty_done
                     self.peso_neto = self.peso_bruto - self.tara - self.peso_neto_x
                 else:
                     self.quantity_done = felf.peso_bruto - self.tara

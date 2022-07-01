@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
+    <!-- explicit list view definition >
 
     <record model="ir.ui.view" id="herencia_module_stock">
       <field name="name">herencia list stok</field>
@@ -12,7 +12,7 @@
           <field name="peso_caja_presentacion"/>
 		    </xpath>
       </field>
-    </record>
+    </record-->
 
     <record model="ir.ui.view" id="herencia_module_sp">
       <field name="name">herencia list stok</field>
@@ -46,7 +46,7 @@ attrs="{'invisible': [('product_id.categ_id', '=', False)]}"
         <xpath expr="//field[@name='qty_done']" position = "before">
           <field name="tara" invisible="1"/>
           <field name="peso_bruto"/>
-          <field name="peso_neto" attrs="{'invisible': [('product_id.categ_id','=',2288)]}"/>
+          <field name="peso_neto" attrs="{'invisible': [('product_id.categ_id','=','2288')]}"/>
 
 
           <field name="peso_bruto_x" invisible="1"/>

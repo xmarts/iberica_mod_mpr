@@ -17,7 +17,7 @@ class Picking(models.Model):
             self.peso_bruto = self.shipping_weight
 
 class ProductTemplate(models.Model):
-    _inherit = 'product.product'
+    _inherit = 'product.template'
     _description = 'test_module.test_module'
 
     peso_caja_presentacion = fields.Float(store=True)

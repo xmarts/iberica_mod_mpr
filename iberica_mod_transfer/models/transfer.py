@@ -12,6 +12,12 @@ class Picking(models.Model):
 
     @api.onchange('shipping_weight')
     def _traer_datos(self):
-        if self.name:
+        if self.shipping_weight:
             self.shipping_weight = self.env['stock.move.line'].browse(vals.get('peso_bruto'))
             self.peso_bruto = self.shipping_weight
+
+class ProductTemplate(models.Model):
+    _inherit = 'product.product'
+    _description = 'test_module.test_module'
+
+    peso_caja_presentacion = fields.Float(store=True)

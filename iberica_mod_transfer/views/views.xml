@@ -10,6 +10,7 @@
 
         <xpath expr="//field[@name='location_dest_id']" position = "before">
           <field name="tara"/>
+          <field name="producto_terminado"/>
 		    </xpath>
 
 

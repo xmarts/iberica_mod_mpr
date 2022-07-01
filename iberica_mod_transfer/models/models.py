@@ -19,13 +19,14 @@ class Picking(models.Model):
             if self.product_id:
                 self.tara = line.picking_id.tara
                 self.peso_bruto_x = line.product_id.weight
-                if self.product_id.categ_id != 2 :
+                if self.product_id.categ_id != 2288 :
                     self.peso_neto_x = self.peso_bruto_x * self.qty_done
                     self.peso_neto = self.peso_bruto - self.tara - self.peso_neto_x
                 else:
-                    self.quantity_done = felf.peso_bruto - self.tara
+                    self.qty_done = self.peso_bruto - self.tara
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     tara = fields.Float(default=1.0, store=True)
+    producto_terminado = fields.One2many('stock.move', 'product_id', copy=True)

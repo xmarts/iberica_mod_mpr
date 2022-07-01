@@ -29,4 +29,4 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     tara = fields.Float(default=1.0, store=True)
-    producto_terminado = fields.One2many('stock.move', 'product_id', copy=True)
+    producto_terminado = fields.Many2one('stock.move')

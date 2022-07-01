@@ -9,7 +9,7 @@ class Picking(models.Model):
 
     peso_bruto = fields.Float(default=1.0, store=True)
     peso_neto = fields.Float(default=1.0, store=True)
-    type_1 = fields.Selection(related='product_id.categ_id.id')
+    type_1 = fields.Integer(related='product_id.categ_id.id')
 
     peso_neto_x = fields.Float(default=1.0, store=True)
     peso_bruto_x = fields.Float(default=1.0, store=True)

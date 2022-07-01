@@ -46,12 +46,12 @@ attrs="{'invisible': [('product_id.categ_id', '=', False)]}"
         <xpath expr="//field[@name='qty_done']" position = "before">
           <field name="tara" invisible="1"/>
           <field name="peso_bruto"/>
-          <field name="peso_neto" />
+          <field name="peso_neto" attrs="{'invisible': [('product_id.semielaborado','=',True)]}"/>
 
 
           <field name="peso_bruto_x" invisible="1"/>
           <field name="peso_neto_x" invisible="1"/>
-          <field name="type_1" invisible="1"/>
+          <field name="type_1" />
         </xpath>
         <!--xpath expr = "//field[@name='line_ids']/tree/field[@name='account_id']" position = "before" >
           <field name="unidad"/>

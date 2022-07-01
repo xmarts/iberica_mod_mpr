@@ -9,7 +9,7 @@ class Picking(models.Model):
 
     peso_bruto = fields.Float(default=1.0, store=True)
     peso_neto = fields.Float(default=1.0, store=True)
-    type_1 = fields.Integer(related='product_id.categ_id.id')
+    type_1 = fields.Integer(related='product_id.categ_id')
 
     peso_neto_x = fields.Float(default=1.0, store=True)
     peso_bruto_x = fields.Float(default=1.0, store=True)
@@ -20,7 +20,7 @@ class Picking(models.Model):
             if self.product_id:
                 self.tara = line.picking_id.tara
                 self.peso_bruto_x = line.picking_id.product_id.peso_caja_presentacion
-                if self.product_id.categ_id != 2288 :
+                if self.product_id.semielaborado != True :
                     self.peso_neto_x = self.peso_bruto_x * self.qty_done
                     self.peso_neto = self.peso_bruto - self.tara - self.peso_neto_x
                 else:

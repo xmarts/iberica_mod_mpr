@@ -21,3 +21,4 @@ class ProductTemplate(models.Model):
     _description = 'test_module.test_module'
 
     peso_caja_presentacion = fields.Float(store=True)
+    semielaborado = fields.Boolean()

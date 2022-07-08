@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from decimal import Decimal
 
 class Picking(models.Model):
     _inherit = 'stock.move.line'
@@ -22,8 +23,8 @@ class Picking(models.Model):
                 self.peso_bruto_x = line.picking_id.product_id.peso_caja_presentacion
                 if self.product_id.semielaborado != True :
                     self.semielaborado = False
-                    self.peso_neto_x = self.peso_bruto_x * self.qty_done
-                    self.peso_neto = self.peso_bruto - self.tara - self.peso_neto_x
+                    self.peso_neto_x = Decimal(self.peso_bruto_x) * self.qty_done
+                    self.peso_neto = Decimal(self.peso_bruto - self.tara - self.peso_neto_x)
                 else:
                     self.semielaborado = True
                     self.qty_done = self.peso_bruto - self.tara

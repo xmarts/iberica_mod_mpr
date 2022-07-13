@@ -30,13 +30,13 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     tara = fields.Float(default=1.0, store=True, digits=(12,3))
+    peso_bruto = fields.Float(store=True, digits=(12,3))
+    peso_neto = fields.Float(store=True, digits=(12,3))
     #producto_terminado = fields.Many2one('product.product')
     #product_id = fields.Many2one('product.product', 'Product', related='move_lines.product_id', readonly=True)
 
     def action_put_in_pack(self):
-        res = super(Picking, self).action_put_in_pack()
-        peso_bruto = fields.Float(store=True, digits=(12,3))
-        peso_neto = fields.Float(store=True, digits=(12,3))
+        res = super(StockPicking, self).action_put_in_pack()
         for line in self:
             self.peso_bruto = line.move_line_ids.peso_bruto
             self.peso_neto = line.move_line_ids.peso_neto

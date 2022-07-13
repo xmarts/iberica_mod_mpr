@@ -20,12 +20,10 @@ class Picking(models.Model):
             if self.product_id:
                 self.tara = line.picking_id.tara
                 self.peso_bruto_x = line.picking_id.product_id.peso_caja_presentacion
-                if self.product_id.semielaborado != True :
-                    self.semielaborado = False
+                if self.semielaborado != True :
                     self.peso_neto_x = self.peso_bruto_x * self.qty_done
                     self.peso_neto = self.peso_bruto - self.tara - self.peso_neto_x
                 else:
-                    self.semielaborado = True
                     self.qty_done = self.peso_bruto - self.tara
 
 class StockPicking(models.Model):

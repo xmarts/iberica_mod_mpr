@@ -35,15 +35,15 @@ class StockPicking(models.Model):
     #producto_terminado = fields.Many2one('product.product')
     #product_id = fields.Many2one('product.product', 'Product', related='move_lines.product_id', readonly=True)
 
-    def action_put_in_pack(self):
-        res = super(StockPicking, self).action_put_in_pack()
+    def _put_in_pack(self):
+        package = super(StockPicking, self)._put_in_pack()
         #for line in self:
           #  self.peso_bruto = line.move_line_ids.peso_bruto
           #  self.peso_neto = line.move_line_ids.peso_neto
-        res.update({
+        package.update({
             #'quantity': self.product_uom_qty,
             'shipping_weight': self.move_line_ids.peso_neto,
             'peso_bruto': self.move_line_ids.peso_bruto,
 
         })
-        return res
+        return package

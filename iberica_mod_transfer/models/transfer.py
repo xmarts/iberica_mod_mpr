@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
-class PickingQuant(models.Model):
+class StockQuantPackage(models.Model):
     _inherit = 'stock.quant.package'
     _description = 'test_module.test_module'
-
-
-    peso_bruto = fields.Float(compute='_compute_weight_bruto', store=True, digits=(12,3))
 
     @api.depends('quant_ids')
     def _compute_weight_bruto(self):
@@ -23,6 +20,8 @@ class PickingQuant(models.Model):
                 for ml in current_picking_move_line_ids:
                     peso_bruto += ml.peso_bruto
             package.peso_bruto = peso_bruto
+
+    peso_bruto = fields.Float(compute='_compute_weight_bruto', store=True, digits=(12,3))
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'

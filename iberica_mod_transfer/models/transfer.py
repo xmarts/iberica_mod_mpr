@@ -5,7 +5,7 @@ from odoo import models, fields, api, _
 
 class StockQuantPackage(models.Model):
     _inherit = 'stock.quant.package'
-    _description = 'test_module.test_module'
+    #_description = 'test_module.test_module'
 
     @api.depends('quant_ids')
     def _compute_weight_bruto(self):

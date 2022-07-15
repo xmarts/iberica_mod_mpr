@@ -8,7 +8,7 @@ class PickingQuant(models.Model):
     _description = 'test_module.test_module'
 
 
-    peso_bruto = fields.Float(store=True, digits=(12,3))
+    peso_bruto = fields.Float(compute='_compute_weight_bruto', store=True, digits=(12,3))
 
     @api.depends('quant_ids')
     def _compute_weight_bruto(self):

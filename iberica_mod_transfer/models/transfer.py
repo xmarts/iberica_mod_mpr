@@ -22,9 +22,6 @@ class PickingQuant(models.Model):
                 ])
                 for ml in current_picking_move_line_ids:
                     peso_bruto += ml.peso_bruto
-            else:
-                for quant in package.quant_ids:
-                    peso_bruto += quant.peso_bruto
             package.peso_bruto = peso_bruto
 
 class ProductTemplate(models.Model):

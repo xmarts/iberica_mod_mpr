@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 
 class Picking(models.Model):
     _inherit = 'stock.move.line'

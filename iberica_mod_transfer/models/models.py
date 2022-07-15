@@ -37,6 +37,10 @@ class StockPicking(models.Model):
 
     def action_put_in_pack(self):
         res = super(StockPicking, self).action_put_in_pack()
+        move_line_ids = picking_move_lines.filtered(lambda ml:
+                float_compare(ml.qty_done, 0.0, precision_rounding=ml.product_uom_id.rounding) > 0
+                and not ml.result_package_id
+            )
         if move_line_ids:
         #for line in self:
           #  self.peso_bruto = line.move_line_ids.peso_bruto

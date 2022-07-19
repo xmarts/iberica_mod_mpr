@@ -11,16 +11,19 @@ class Picking(models.Model):
     peso_bruto = fields.Float(default=1.0, store=True, digits=(12,3))
     peso_neto = fields.Float(default=1.0, store=True, digits=(12,3))
     semielaborado = fields.Boolean()
+    semielaborado_x = fields.Boolean()
 
     peso_neto_x = fields.Float(default=1.0, store=True, digits=(12,3))
     peso_bruto_x = fields.Float(default=1.0, store=True, digits=(12,3))
 
-    @api.onchange('tara', 'peso_bruto', 'qty_done')
+    @api.onchange('tara', 'peso_bruto', 'qty_done', 'product_id')
     def _traer_datos(self):
         for line in self:
             if self.product_id:
                 self.tara = line.picking_id.tara
                 self.peso_bruto_x = line.picking_id.product_id.peso_caja_presentacion
+                self.semielaborado_x = line.product_id.semielaborado
+                self.semielaborado = self.semielaborado_x
                 if self.semielaborado != True :
                     self.peso_neto_x = self.peso_bruto_x * self.qty_done
                     self.peso_neto = self.peso_bruto - self.tara - self.peso_neto_x
@@ -54,3 +57,22 @@ class StockPicking(models.Model):
 
             #})
             #return res
+
+    def _pre_put_in_pack_hook(self, move_line_ids):
+        res = super(StockPicking, self)._pre_put_in_pack_hook(move_line_ids)
+        if not res:
+            if self.carrier_id:
+                return self._set_pesos_package_type()
+        else:
+            return res
+
+    def _set_pesos_package_type(self):
+        """ This method returns an action allowing to set the package type and the shipping weight
+        on the stock.quant.package.
+        """
+        self.ensure_one()
+        
+        return {
+            'shipping_weight': self.move_line_ids.peso_neto,
+            'peso_bruto': self.move_line_ids.peso_bruto,
+        }

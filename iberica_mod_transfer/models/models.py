@@ -39,32 +39,32 @@ class StockPicking(models.Model):
     #producto_terminado = fields.Many2one('product.product')
     #product_id = fields.Many2one('product.product', 'Product', related='move_lines.product_id', readonly=True)
 
-    #def action_put_in_pack(self):
-     #   res = super(StockPicking, self).action_put_in_pack()
-      #  picking_move_lines = self.move_line_ids
-       # move_line_ids = picking_move_lines.filtered(lambda ml:
-        #        float_compare(ml.qty_done, 0.0, precision_rounding=ml.product_uom_id.rounding) > 0
-         #       and not ml.result_package_id
-          #  )
-        #if move_line_ids:
-        #for line in self:
-          #  self.peso_bruto = line.move_line_ids.peso_bruto
-          #  self.peso_neto = line.move_line_ids.peso_neto
-         #   res.update({
-            #'quantity': self.product_uom_qty,
-          #  'shipping_weight': self.move_line_ids.peso_neto,
-           # 'peso_bruto': self.move_line_ids.peso_bruto,
-
-            #})
-            #return res
-
-    def button_validate(self, move_line_ids):
+    def button_validate(self):
         res = super(StockPicking, self).button_validate()
-        #for picking in self:
-        res.update({
-            'shipping_weight': picking.peso_neto,
-            'peso_bruto': picking.peso_bruto,
-        })
-        return res
+        picking_move_lines = self.move_line_ids
+        #move_line_ids = picking_move_lines.filtered(lambda ml:
+         #       float_compare(ml.qty_done, 0.0, precision_rounding=ml.product_uom_id.rounding) > 0
+          #      and not ml.result_package_id
+           # )
+        if picking_move_lines:
+            for line in self:
+                self.peso_bruto = line.picking_move_lines.peso_bruto
+                self.peso_neto = line.picking_move_lines.peso_neto
+                res.update({
+                #'quantity': self.product_uom_qty,
+                'shipping_weight': self.picking_move_lines.peso_neto,
+                'peso_bruto': self.picking_move_lines.peso_bruto,
+
+                })
+            return res
+
+    #def button_validate(self, move_line_ids):
+     #   res = super(StockPicking, self).button_validate()
+      #  #for picking in self:
+       # res.update({
+        #    'shipping_weight': self.peso_neto,
+         #   'peso_bruto': self.peso_bruto,
+        #})
+        #return res
 
     

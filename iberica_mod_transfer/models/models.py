@@ -60,11 +60,11 @@ class StockPicking(models.Model):
 
     def button_validate(self, move_line_ids):
         res = super(StockPicking, self).button_validate()
-        for picking in self:
-            res.update({
-                'shipping_weight': picking.move_line_ids.peso_neto,
-                'peso_bruto': picking.move_line_ids.peso_bruto,
-            })
+        #for picking in self:
+        res.update({
+            'shipping_weight': picking.peso_neto,
+            'peso_bruto': picking.peso_bruto,
+        })
         return res
 
     

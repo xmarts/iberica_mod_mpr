@@ -58,21 +58,12 @@ class StockPicking(models.Model):
             #})
             #return res
 
-    def _pre_put_in_pack_hook(self, move_line_ids):
-        res = super(StockPicking, self)._pre_put_in_pack_hook(move_line_ids)
-        if not res:
-            if self.carrier_id:
-                return self._set_pesos_package_type()
-        else:
-            return res
-
-    def _set_pesos_package_type(self):
-        """ This method returns an action allowing to set the package type and the shipping weight
-        on the stock.quant.package.
-        """
-        self.ensure_one()
-        
-        return {
+    def button_validate(self, move_line_ids):
+        res = super(StockPicking, self).button_validate()
+        res.update({
             'shipping_weight': self.move_line_ids.peso_neto,
             'peso_bruto': self.move_line_ids.peso_bruto,
-        }
+        })
+        return res
+
+    

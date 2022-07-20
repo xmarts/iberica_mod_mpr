@@ -55,8 +55,8 @@ class StockPicking(models.Model):
                     peso_neto = lineup.peso_neto
                     res.update({
                     #'quantity': self.product_uom_qty,
-                    'shipping_weight': peso_neto,
-                    'peso_bruto': peso_bruto,
+                    'quantity': 0,
+                    #'peso_bruto': peso_bruto,
 
                     })
         #return res

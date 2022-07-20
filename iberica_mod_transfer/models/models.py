@@ -53,13 +53,13 @@ class StockPicking(models.Model):
                 for lineup in line.move_line_ids:
                     peso_bruto = lineup.peso_bruto
                     peso_neto = lineup.peso_neto
-                    res.update({
+        res.update({
                     #'quantity': self.product_uom_qty,
                     'quantity': 0,
                     #'peso_bruto': peso_bruto,
 
                     })
-        #return res
+        return res
 
     #def button_validate(self, move_line_ids):
      #   res = super(StockPicking, self).button_validate()

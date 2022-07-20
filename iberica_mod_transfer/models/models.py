@@ -48,14 +48,17 @@ class StockPicking(models.Model):
            # )
         if self.move_line_ids:
             for line in self:
-                peso_bruto = line.move_line_ids.peso_bruto
-                peso_neto = line.move_line_ids.peso_neto
-                res.update({
-                #'quantity': self.product_uom_qty,
-                'shipping_weight': peso_neto,
-                'peso_bruto': peso_bruto,
+                peso_bruto = 0
+                peso_neto = 0
+                for lineup in line.move_line_ids:
+                    peso_bruto = lineup.peso_bruto
+                    peso_neto = lineup.peso_neto
+                    res.update({
+                    #'quantity': self.product_uom_qty,
+                    'shipping_weight': peso_neto,
+                    'peso_bruto': peso_bruto,
 
-                })
+                    })
             return res
 
     #def button_validate(self, move_line_ids):

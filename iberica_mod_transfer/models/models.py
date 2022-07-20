@@ -48,12 +48,12 @@ class StockPicking(models.Model):
            # )
         if picking_move_lines:
             for line in self:
-                self.peso_bruto = line.picking_move_lines.peso_bruto
-                self.peso_neto = line.picking_move_lines.peso_neto
+                peso_bruto = line.picking_move_lines.peso_bruto
+                peso_neto = line.picking_move_lines.peso_neto
                 res.update({
                 #'quantity': self.product_uom_qty,
-                'shipping_weight': self.picking_move_lines.peso_neto,
-                'peso_bruto': self.picking_move_lines.peso_bruto,
+                'shipping_weight': peso_neto,
+                'peso_bruto': peso_bruto,
 
                 })
             return res

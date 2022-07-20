@@ -59,7 +59,7 @@ class StockPicking(models.Model):
                     'peso_bruto': peso_bruto,
 
                     })
-            return res
+        return res
 
     #def button_validate(self, move_line_ids):
      #   res = super(StockPicking, self).button_validate()

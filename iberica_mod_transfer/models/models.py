@@ -41,15 +41,15 @@ class StockPicking(models.Model):
 
     def button_validate(self):
         res = super(StockPicking, self).button_validate()
-        picking_move_lines = self.move_line_ids
+       # picking_move_lines = self.move_line_ids
         #move_line_ids = picking_move_lines.filtered(lambda ml:
          #       float_compare(ml.qty_done, 0.0, precision_rounding=ml.product_uom_id.rounding) > 0
           #      and not ml.result_package_id
            # )
-        if picking_move_lines:
+        if self.move_line_ids:
             for line in self:
-                peso_bruto = line.picking_move_lines.peso_bruto
-                peso_neto = line.picking_move_lines.peso_neto
+                peso_bruto = line.move_line_ids.peso_bruto
+                peso_neto = line.move_line_ids.peso_neto
                 res.update({
                 #'quantity': self.product_uom_qty,
                 'shipping_weight': peso_neto,

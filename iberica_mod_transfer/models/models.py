@@ -39,27 +39,27 @@ class StockPicking(models.Model):
     #producto_terminado = fields.Many2one('product.product')
     #product_id = fields.Many2one('product.product', 'Product', related='move_lines.product_id', readonly=True)
 
-    def button_validate(self):
-        res = super(StockPicking, self).button_validate()
+    #def button_validate(self):
+     #   res = super(StockPicking, self).button_validate()
        # picking_move_lines = self.move_line_ids
         #move_line_ids = picking_move_lines.filtered(lambda ml:
          #       float_compare(ml.qty_done, 0.0, precision_rounding=ml.product_uom_id.rounding) > 0
           #      and not ml.result_package_id
            # )
-        if self.move_line_ids:
-            for line in self:
-                peso_bruto = 0
-                peso_neto = 0
-                for lineup in line.move_line_ids:
-                    peso_bruto = lineup.peso_bruto
-                    peso_neto = lineup.peso_neto
-        res.update({
+      #  if self.move_line_ids:
+       #     for line in self:
+        #        peso_bruto = 0
+         #       peso_neto = 0
+          #      for lineup in line.move_line_ids:
+           #         peso_bruto = lineup.peso_bruto
+            #        peso_neto = lineup.peso_neto
+            #res.update({
                     #'quantity': self.product_uom_qty,
-                    'quantity': 0,
+             #       'quantity': 0,
                     #'peso_bruto': peso_bruto,
 
-                    })
-        return res
+              #      })
+            #return res
 
     #def button_validate(self, move_line_ids):
      #   res = super(StockPicking, self).button_validate()

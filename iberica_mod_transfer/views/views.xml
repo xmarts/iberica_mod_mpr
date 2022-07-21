@@ -44,9 +44,9 @@ attrs="{'invisible': [('product_id.categ_id', '=', False)]}"
       <field name="arch" type="xml">
 
         <xpath expr="//field[@name='qty_done']" position = "before">
-          <field name="tara" invisible="1"/>
-          <field name="peso_bruto"/>
-          <field name="peso_neto" attrs="{'invisible': [('semielaborado', '=', True)]}"/>
+          <field name="tara" invisible="1" attrs="{'invisible': [('ralacion_tipo', '!=', WIP-INTERNAL)]}"/>
+          <field name="peso_bruto" attrs="{'invisible': [('ralacion_tipo', '!=', WIP-INTERNAL)]}"/>
+          <field name="peso_neto" attrs="{'invisible': [('semielaborado', '=', True),('ralacion_tipo', '!=', WIP-INTERNAL)]}"/>
 
 
           <field name="peso_bruto_x" invisible="1"/>

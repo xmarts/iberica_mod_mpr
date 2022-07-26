@@ -34,11 +34,18 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     tara = fields.Float(default=1.0, store=True, digits=(12,3))
+    relacion = fields.Char()
     peso_bruto = fields.Float(store=True, digits=(12,3))
     peso_neto = fields.Float(store=True, digits=(12,3))
     #producto_terminado = fields.Many2one('product.product')
     #product_id = fields.Many2one('product.product', 'Product', related='move_lines.product_id', readonly=True)
 
+    @api.depends('picking_type_id')
+    def _traer_rel(self):
+        for r in self:
+            if r.picking_type_id:
+                r.relacion = r.picking_type_id.barcode
+                
     #def button_validate(self):
      #   res = super(StockPicking, self).button_validate()
        # picking_move_lines = self.move_line_ids

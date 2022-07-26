@@ -8,8 +8,8 @@ class Picking(models.Model):
     _description = 'test_module.test_module'
     tara = fields.Float(default=1.0, store=True, digits=(12,3))
 
-    peso_bruto = fields.Float(store=True, digits=(12,3))
-    peso_neto = fields.Float(store=True, digits=(12,3))
+    peso_bruto = fields.Float(default=1.0, store=True, digits=(12,3))
+    peso_neto = fields.Float(default=1.0, store=True, digits=(12,3))
     semielaborado = fields.Boolean()
     semielaborado_x = fields.Boolean()
 

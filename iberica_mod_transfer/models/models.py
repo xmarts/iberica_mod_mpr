@@ -34,8 +34,8 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     tara = fields.Float(default=1.0, store=True, digits=(12,3))
-    relacion = fields.Char()
-    default = fields.Char(default="WIP-INTERNAL")
+    relacion = fields.Char(related="picking_type_id.barcode")
+    #default = fields.Char(default="WIP-INTERNAL")
     peso_bruto = fields.Float(store=True, digits=(12,3))
     peso_neto = fields.Float(store=True, digits=(12,3))
     #producto_terminado = fields.Many2one('product.product')

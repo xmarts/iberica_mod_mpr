@@ -37,7 +37,7 @@ class StockPicking(models.Model):
 
     peso_tara = fields.Float(default=1.0, store=True, digits=(12,3))
     relacion = fields.Integer(related="picking_type_id.id")
-    default = fields.Char(default="WIP-INTERNAL")
+    #default = fields.Char(default="WIP-INTERNAL")
     peso_bruto = fields.Float(store=True, digits=(12,3))
     peso_neto = fields.Float(store=True, digits=(12,3))
     tara = fields.Float(default=1.0, store=True, digits=(12,3))

@@ -8,9 +8,8 @@
       <field name="arch" type="xml">
 
         <xpath expr="//field[@name='location_dest_id']" position = "before">
-          <field name="relacion"/>
-          <field name="peso_tara" attrs="{'invisible': ('relacion','!=',765)}"/>
-          <!--<field name="default" invisible="1"/>-->
+          <field name="relacion" invisible="1"/>
+          <field name="peso_tara" attrs="{'invisible':[('relacion','!=',765)]}"/>
           <field name="tara" invisible="1"/>
 		    </xpath>
 
@@ -24,10 +23,10 @@
       <field name="arch" type="xml">
 
         <xpath expr="//field[@name='qty_done']" position="before">
-          <field name="peso_tara" invisible="1" />
+          <field name="peso_tara" invisible="1"/>
           <field name="picking_relacion"/>
-          <field name="peso_bruto" attrs="{'invisible': ('picking_relacion', '!=', 765)}"/>
-          <field name="peso_neto" attrs="{'invisible': ('picking_relacion', '!=', 765)}"/>
+          <field name="peso_bruto" attrs="{'invisible':[('picking_relacion', '!=', 765)]}"/>
+          <field name="peso_neto" attrs="{'invisible':[('picking_relacion', '!=', 765)]}"/>
           <field name="peso_bruto_x" invisible="1"/>
           <field name="peso_neto_x" invisible="1"/>
           <field name="semielaborado" invisible="1"/>

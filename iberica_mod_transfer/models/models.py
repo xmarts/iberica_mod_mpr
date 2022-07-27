@@ -12,7 +12,7 @@ class Picking(models.Model):
     peso_neto = fields.Float(default=1.0, store=True, digits=(12,3))
     semielaborado = fields.Boolean()
     semielaborado_x = fields.Boolean()
-    picking_relacion = fields.Integer()
+    picking_relacion = fields.Integer(related="picking_id.relacion")
     peso_neto_x = fields.Float(default=1.0, store=True, digits=(12,3))
     peso_bruto_x = fields.Float(default=1.0, store=True, digits=(12,3))
     tara = fields.Float(default=1.0, store=True, digits=(12,3))

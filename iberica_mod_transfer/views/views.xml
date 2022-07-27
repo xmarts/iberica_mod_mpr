@@ -22,7 +22,7 @@
 
         <xpath expr="//field[@name='location_dest_id']" position = "before">
           <field name="relacion"/>
-          <field name="tara" attrs="{'invisible': ('relacion', '!=', 'WIP-INTERNAL')}"/>
+          <field name="peso_tara" attrs="{'invisible': ('relacion', '!=', 'WIP-INTERNAL')}"/>
           <!--<field name="default" invisible="1"/>-->
 		    </xpath>
 
@@ -46,7 +46,7 @@ attrs="{'invisible': [('product_id.categ_id', '=', False)]}"
       <field name="arch" type="xml">
 
         <xpath expr="//field[@name='qty_done']" position = "before">
-          <field name="tara" invisible="1" />
+          <field name="peso_tara" invisible="1" />
           <field name="peso_bruto" attrs="{'invisible': ('picking_id.relacion', '!=', 'WIP-INTERNAL')}"/>
           <field name="peso_neto" attrs="{'invisible': ('picking_id.relacion', '!=', 'WIP-INTERNAL')}"/>
           <field name="picking_relacion"/>

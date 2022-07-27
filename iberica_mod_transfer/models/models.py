@@ -37,18 +37,23 @@ class StockPicking(models.Model):
 
     peso_tara = fields.Float(default=1.0, store=True, digits=(12,3))
     relacion = fields.Integer(related="picking_type_id.id")
-    #default = fields.Char(default="WIP-INTERNAL")
     peso_bruto = fields.Float(store=True, digits=(12,3))
     peso_neto = fields.Float(store=True, digits=(12,3))
     tara = fields.Float(default=1.0, store=True, digits=(12,3))
-    #producto_terminado = fields.Many2one('product.product')
-    #product_id = fields.Many2one('product.product', 'Product', related='move_lines.product_id', readonly=True)
+    check_relacion = fields.Boolean(compute="boolean_relacion")
 
     @api.depends('picking_type_id')
     def _traer_rel(self):
         for r in self:
             if r.picking_type_id:
                 r.relacion = r.picking_type_id.barcode
+    
+    def boolean_relacion(self):
+        for rec in self:
+            if rec.relacion == 765:
+                rec.check_relacion = True
+            else:
+                rec.check_relacion = False
     
 class StockPickingType(models.Model):
     _inherit = "stock.picking.type"

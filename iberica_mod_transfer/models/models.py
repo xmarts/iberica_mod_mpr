@@ -7,7 +7,7 @@ class Picking(models.Model):
     _inherit = 'stock.move.line'
     _description = 'test_module.test_module'
     
-    peso_tara = fields.Float(default=1.0, store=True, digits=(12,3))
+    peso_tara = fields.Float(string="Tara", default=1.0, store=True, digits=(12,3))
     peso_bruto = fields.Float(default=1.0, store=True, digits=(12,3))
     peso_neto = fields.Float(default=1.0, store=True, digits=(12,3))
     semielaborado = fields.Boolean()
@@ -40,20 +40,12 @@ class StockPicking(models.Model):
     peso_bruto = fields.Float(store=True, digits=(12,3))
     peso_neto = fields.Float(store=True, digits=(12,3))
     tara = fields.Float(default=1.0, store=True, digits=(12,3))
-    check_relacion = fields.Boolean(compute="boolean_relacion")
 
     @api.depends('picking_type_id')
     def _traer_rel(self):
         for r in self:
             if r.picking_type_id:
                 r.relacion = r.picking_type_id.barcode
-    
-    def boolean_relacion(self):
-        for rec in self:
-            if rec.relacion == 765:
-                rec.check_relacion = True
-            else:
-                rec.check_relacion = False
     
 class StockPickingType(models.Model):
     _inherit = "stock.picking.type"

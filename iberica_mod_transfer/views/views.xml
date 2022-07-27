@@ -22,6 +22,8 @@
 
         <xpath expr="//field[@name='location_dest_id']" position = "before">
           <field name="tara" attrs="{'invisible': ('relacion', '!=', default)}"/>
+          <field name="default" invisible="1"/>
+          <field name="relacion" invisible="1"/>
 		    </xpath>
 
 

@@ -27,7 +27,7 @@
           <field name="peso_tara" invisible="1"/>
           <field name="picking_relacion"/>
           <field name="peso_bruto" attrs="{'column_invisible':[('parent.check_relacion', '=', False)]}"/>
-          <field name="peso_neto" attrs="{'column_invisible':[('parent.chec_relacion', '=', False)]}"/>
+          <field name="peso_neto" attrs="{'column_invisible':[('parent.check_relacion', '=', False)]}"/>
           <field name="peso_bruto_x" invisible="1"/>
           <field name="peso_neto_x" invisible="1"/>
           <field name="semielaborado" invisible="1"/>

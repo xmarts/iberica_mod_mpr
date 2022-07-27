@@ -46,36 +46,8 @@ class StockPicking(models.Model):
         for r in self:
             if r.picking_type_id:
                 r.relacion = r.picking_type_id.barcode
-                
-    #def button_validate(self):
-     #   res = super(StockPicking, self).button_validate()
-       # picking_move_lines = self.move_line_ids
-        #move_line_ids = picking_move_lines.filtered(lambda ml:
-         #       float_compare(ml.qty_done, 0.0, precision_rounding=ml.product_uom_id.rounding) > 0
-          #      and not ml.result_package_id
-           # )
-      #  if self.move_line_ids:
-       #     for line in self:
-        #        peso_bruto = 0
-         #       peso_neto = 0
-          #      for lineup in line.move_line_ids:
-           #         peso_bruto = lineup.peso_bruto
-            #        peso_neto = lineup.peso_neto
-            #res.update({
-                    #'quantity': self.product_uom_qty,
-             #       'quantity': 0,
-                    #'peso_bruto': peso_bruto,
-
-              #      })
-            #return res
-
-    #def button_validate(self, move_line_ids):
-     #   res = super(StockPicking, self).button_validate()
-      #  #for picking in self:
-       # res.update({
-        #    'shipping_weight': self.peso_neto,
-         #   'peso_bruto': self.peso_bruto,
-        #})
-        #return res
-
     
+class StockPickingType(models.Model):
+    _inherit = "stock.picking.type"
+
+    barcode = fields.Char("Código de barra")

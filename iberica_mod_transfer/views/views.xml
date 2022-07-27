@@ -32,7 +32,7 @@
           <field name="unidad"/>
           <field name="metros"/>
           <field name="cajas"/>
-attrs="{'invisible': [('product_id.categ_id', '=', False)]}"
+         attrs="{'invisible': [('product_id.categ_id', '=', False)]}"
           <field name="unidad_x" invisible="1"/>
           <field name="metros_x" invisible="1"/>
           <field name="cajas_x" invisible="1"/>
@@ -40,7 +40,7 @@ attrs="{'invisible': [('product_id.categ_id', '=', False)]}"
       </field>
     </record>
 
-    <record model="ir.ui.view" id="herencia_module_sp">
+    <record model="ir.ui.view" id="herencia_module_sp_line">
       <field name="name">herencia list stok</field>
       <field name="model">stock.move.line</field>
       <field name="inherit_id" ref="stock.view_move_line_tree" />

@@ -9,7 +9,7 @@
 
         <xpath expr="//field[@name='location_dest_id']" position = "before">
           <field name="relacion"/>
-          <field name="peso_tara" attrs="{'invisible': ('picking_type_id', '!=', 765)}"/>
+          <field name="peso_tara" attrs="{'invisible': ('relacion','!=',765)}"/>
           <!--<field name="default" invisible="1"/>-->
           <field name="tara" invisible="1"/>
 		    </xpath>

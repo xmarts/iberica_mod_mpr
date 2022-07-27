@@ -54,6 +54,7 @@ attrs="{'invisible': [('product_id.categ_id', '=', False)]}"
           <field name="peso_bruto_x" invisible="1"/>
           <field name="peso_neto_x" invisible="1"/>
           <field name="semielaborado" invisible="1"/>
+          <field name="tara" invisible="1"/>
         </xpath>
         <!--xpath expr = "//field[@name='line_ids']/tree/field[@name='account_id']" position = "before" >
           <field name="unidad"/>

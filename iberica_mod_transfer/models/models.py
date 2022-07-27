@@ -15,6 +15,7 @@ class Picking(models.Model):
     picking_relacion = fields.Char()
     peso_neto_x = fields.Float(default=1.0, store=True, digits=(12,3))
     peso_bruto_x = fields.Float(default=1.0, store=True, digits=(12,3))
+    tara = fields.Float(default=1.0, store=True, digits=(12,3))
 
     @api.onchange('peso_tara', 'peso_bruto', 'qty_done', 'product_id')
     def _traer_datos(self):

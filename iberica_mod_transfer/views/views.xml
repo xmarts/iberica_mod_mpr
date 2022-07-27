@@ -21,7 +21,7 @@
       <field name="arch" type="xml">
 
         <xpath expr="//field[@name='location_dest_id']" position = "before">
-          <field name="tara" attrs="{'invisible': ('relacion', '=', default)}"/>
+          <field name="tara" attrs="{'invisible': ('relacion', '!=', default)}"/>
 		    </xpath>
 
 

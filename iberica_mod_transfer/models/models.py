@@ -12,7 +12,7 @@ class Picking(models.Model):
     peso_neto = fields.Float(default=1.0, store=True, digits=(12,3))
     semielaborado = fields.Boolean()
     semielaborado_x = fields.Boolean()
-    picking_relacion = fields.Selection(related='picking_id.relacion')
+    picking_relacion = fields.Char()
     peso_neto_x = fields.Float(default=1.0, store=True, digits=(12,3))
     peso_bruto_x = fields.Float(default=1.0, store=True, digits=(12,3))
 
@@ -20,6 +20,7 @@ class Picking(models.Model):
     def _traer_datos(self):
         for line in self:
             if self.product_id:
+                self.picking_relacion = line.picking_id.relacion
                 self.tara = line.picking_id.tara
                 self.peso_bruto_x = line.picking_id.product_id.peso_caja_presentacion
                 self.semielaborado_x = line.product_id.semielaborado

@@ -39,6 +39,7 @@ class StockPicking(models.Model):
     #default = fields.Char(default="WIP-INTERNAL")
     peso_bruto = fields.Float(store=True, digits=(12,3))
     peso_neto = fields.Float(store=True, digits=(12,3))
+    tara = fields.Float(default=1.0, store=True, digits=(12,3))
     #producto_terminado = fields.Many2one('product.product')
     #product_id = fields.Many2one('product.product', 'Product', related='move_lines.product_id', readonly=True)
 

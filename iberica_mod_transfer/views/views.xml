@@ -24,6 +24,7 @@
           <field name="relacion"/>
           <field name="peso_tara" attrs="{'invisible': ('relacion', '!=', 'WIP-INTERNAL')}"/>
           <!--<field name="default" invisible="1"/>-->
+          <field name="tara"/>
 		    </xpath>
 
 

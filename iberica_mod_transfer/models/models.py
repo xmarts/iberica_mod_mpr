@@ -12,7 +12,7 @@ class Picking(models.Model):
     peso_neto = fields.Float(default=1.0, store=True, digits=(12,3))
     semielaborado = fields.Boolean()
     semielaborado_x = fields.Boolean()
-    picking_relacion = fields.Char()
+    picking_relacion = fields.Integer()
     peso_neto_x = fields.Float(default=1.0, store=True, digits=(12,3))
     peso_bruto_x = fields.Float(default=1.0, store=True, digits=(12,3))
     tara = fields.Float(default=1.0, store=True, digits=(12,3))
@@ -36,8 +36,8 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     peso_tara = fields.Float(default=1.0, store=True, digits=(12,3))
-    relacion = fields.Char(related="picking_type_id.barcode")
-    #default = fields.Char(default="WIP-INTERNAL")
+    relacion = fields.Integer(related="picking_type_id.id")
+    default = fields.Char(default="WIP-INTERNAL")
     peso_bruto = fields.Float(store=True, digits=(12,3))
     peso_neto = fields.Float(store=True, digits=(12,3))
     tara = fields.Float(default=1.0, store=True, digits=(12,3))

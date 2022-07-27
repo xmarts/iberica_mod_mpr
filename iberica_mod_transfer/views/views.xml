@@ -22,7 +22,7 @@
 
         <xpath expr="//field[@name='location_dest_id']" position = "before">
           <field name="relacion"/>
-          <field name="peso_tara" attrs="{'invisible': ('relacion', '!=', 'WIP-INTERNAL')}"/>
+          <field name="peso_tara" attrs="{'invisible': ('picking_type_id', '!=', 765)}"/>
           <!--<field name="default" invisible="1"/>-->
           <field name="tara"/>
 		    </xpath>
@@ -40,7 +40,7 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="herencia_module_sp_line">
+  <record model="ir.ui.view" id="herencia_module_sp_line">
       <field name="name">herencia list stok</field>
       <field name="model">stock.move.line</field>
       <field name="inherit_id" ref="stock.view_move_line_tree" />
@@ -48,8 +48,8 @@
 
         <xpath expr="//field[@name='qty_done']" position = "before">
           <field name="peso_tara" invisible="1" />
-          <field name="peso_bruto" attrs="{'invisible': ('picking_id.relacion', '!=', 'WIP-INTERNAL')}"/>
-          <field name="peso_neto" attrs="{'invisible': ('picking_id.relacion', '!=', 'WIP-INTERNAL')}"/>
+          <field name="peso_bruto" attrs="{'invisible': ('picking_id.relacion', '!=', 765)}"/>
+          <field name="peso_neto" attrs="{'invisible': ('picking_id.relacion', '!=', 765)}"/>
           <field name="picking_relacion"/>
           <field name="peso_bruto_x" invisible="1"/>
           <field name="peso_neto_x" invisible="1"/>

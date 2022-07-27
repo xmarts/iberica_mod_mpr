@@ -25,8 +25,8 @@
         <xpath expr="//field[@name='qty_done']" position="before">
           <field name="peso_tara" invisible="1"/>
           <field name="picking_relacion"/>
-          <field name="peso_bruto" attrs="{'invisible':[('picking_relacion', '!=', 765)]}"/>
-          <field name="peso_neto" attrs="{'invisible':[('picking_relacion', '!=', 765)]}"/>
+          <field name="peso_bruto" attrs="{'column_invisible':[('parent.relacion', '!=', 765)]}"/>
+          <field name="peso_neto" attrs="{'column_invisible':[('parent.relacion', '!=', 765)]}"/>
           <field name="peso_bruto_x" invisible="1"/>
           <field name="peso_neto_x" invisible="1"/>
           <field name="semielaborado" invisible="1"/>

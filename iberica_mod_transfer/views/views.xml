@@ -29,7 +29,7 @@
           <field name="peso_neto" attrs="{'invisible':[('picking_relacion', '!=',765),('semielaborado_x', '!=',False)]}"/>
           <field name="peso_bruto_x" invisible="1"/>
           <field name="peso_neto_x" invisible="1"/>
-          <field name="semielaborado" invisible="0"/>
+          <field name="semielaborado_x" invisible="0"/>
           <field name="tara" invisible="1"/>
         </xpath>
       </field>

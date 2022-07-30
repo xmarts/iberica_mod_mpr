@@ -8,8 +8,8 @@ class Picking(models.Model):
     _description = 'test_module.test_module'
     
     peso_tara = fields.Float(string="Tara", default=1.0, store=True, digits=(12,3))
-    peso_bruto = fields.Float(default=1.0, store=True, digits=(12,3))
-    peso_neto = fields.Float(default=1.0, store=True, digits=(12,3))
+    peso_bruto = fields.Float(default=0.0, store=True, digits=(12,3))
+    peso_neto = fields.Float(default=0.0, store=True, digits=(12,3))
     semielaborado = fields.Boolean()
     semielaborado_x = fields.Boolean()
     picking_relacion = fields.Integer(related="picking_id.relacion")
@@ -20,17 +20,17 @@ class Picking(models.Model):
     @api.onchange('peso_tara', 'peso_bruto', 'qty_done', 'product_id')
     def _traer_datos(self):
         for line in self:
-            if self.product_id:
-                self.picking_relacion = line.picking_id.relacion
-                self.peso_tara = line.picking_id.peso_tara
-                self.peso_bruto_x = line.picking_id.product_id.peso_caja_presentacion
-                self.semielaborado_x = line.product_id.semielaborado
-                self.semielaborado = self.semielaborado_x
-                if self.semielaborado != True :
-                    self.peso_neto_x = self.peso_bruto_x * self.qty_done
-                    self.peso_neto = self.peso_bruto - self.peso_tara - self.peso_neto_x
+            if line.product_id:
+                line.picking_relacion = line.picking_id.relacion
+                line.peso_tara = line.picking_id.peso_tara
+                line.peso_bruto_x = line.picking_id.product_id.peso_caja_presentacion
+                line.semielaborado_x = line.product_id.semielaborado
+                line.semielaborado = line.semielaborado_x
+                if line.semielaborado != True :
+                    line.peso_neto_x = line.peso_bruto_x * line.qty_done
+                    line.peso_neto = line.peso_bruto - line.peso_tara - line.peso_neto_x
                 else:
-                    self.qty_done = self.peso_bruto - self.peso_tara
+                    line.qty_done = line.peso_bruto - line.peso_tara
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'

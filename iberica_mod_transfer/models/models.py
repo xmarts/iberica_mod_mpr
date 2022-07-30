@@ -7,7 +7,7 @@ class Picking(models.Model):
     _inherit = 'stock.move.line'
     _description = 'test_module.test_module'
     
-    peso_tara = fields.Float(string="Tara", default=1.0, store=True, digits=(12,3))
+    peso_tara = fields.Float(string="Tara", default=0.0, store=True, digits=(12,3))
     peso_bruto = fields.Float(default=0.0, store=True, digits=(12,3))
     peso_neto = fields.Float(default=0.0, store=True, digits=(12,3))
     semielaborado = fields.Boolean()
@@ -29,7 +29,7 @@ class Picking(models.Model):
                 if line.semielaborado != True :
                     line.peso_neto_x = line.peso_bruto_x * line.qty_done
                     line.peso_neto = line.peso_bruto - line.peso_tara - line.peso_neto_x
-                else:
+                elif line.peso_bruto != 0:
                     line.qty_done = line.peso_bruto - line.peso_tara
 
 class StockPicking(models.Model):

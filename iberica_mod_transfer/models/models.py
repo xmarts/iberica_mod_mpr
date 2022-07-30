@@ -29,7 +29,7 @@ class Picking(models.Model):
                 if line.semielaborado != True :
                     line.peso_neto_x = line.peso_bruto_x * line.qty_done
                     line.peso_neto = line.peso_bruto - line.peso_tara - line.peso_neto_x
-                elif line.peso_bruto != 0:
+                elif line.peso_bruto == 0:
                     line.qty_done = line.peso_bruto - line.peso_tara
 
 class StockPicking(models.Model):

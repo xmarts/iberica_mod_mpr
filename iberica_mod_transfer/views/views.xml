@@ -4,7 +4,6 @@
     <record model="ir.ui.view" id="herencia_module_sp">
       <field name="name">herencia list stok</field>
       <field name="model">stock.picking</field>
-      <field name="priority" eval="2000"/>
       <field name="inherit_id" ref="stock.view_picking_form" />
       <field name="arch" type="xml">
 
@@ -20,7 +19,6 @@
   <record model="ir.ui.view" id="herencia_module_sp_line">
       <field name="name">herencia list stok</field>
       <field name="model">stock.move.line</field>
-      <field name="priority" eval="2000"/>
       <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree"/>
       <field name="arch" type="xml">
 

@@ -12,15 +12,10 @@
           <field name="tara" invisible="1"/>
           <field name="peso_tara" attrs="{'invisible':[('relacion','!=',765)]}"/>
 		    </xpath>
-        <xpath expr="//field[@name='peso_bruto']" position="attributes">
-          <attribute name="optional">show</attribute>
-          <!-- <attribute name="invisible">[('picking_relacion', '!=',765)]</attribute>-->
-		    </xpath>
-        <xpath expr="//field[@name='peso_neto']" position="attributes">
-          <attribute name="optional">show</attribute>
-          <!-- <attribute name="invisible">[('picking_relacion', '!=',765)]</attribute> -->
-		    </xpath>
-
+        <xpath expr="//field[@name='product_uom_qty']" position="after">
+          <field name="peso_bruto" attrs="{'invisible':[('picking_relacion', '!=',765)]}" optional="show"/>
+          <field name="peso_neto" attrs="{'invisible':[('picking_relacion', '!=',765),('semielaborado_x', '!=',False)]}" optional="show"/>
+        </xpath>
       </field>
     </record>
 

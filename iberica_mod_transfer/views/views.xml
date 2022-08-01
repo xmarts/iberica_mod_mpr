@@ -28,10 +28,11 @@
           <field name="peso_tara" invisible="1"/>
           <field name="picking_relacion" invisible="1"/>
           <field name="peso_bruto" 
-                 attrs="{'column_invisible':[('parent.relacion','!=',765)]}"/>
+                 attrs="{'column_invisible':[('picking_relacion','!=',765)]}"
+                 optional="hide"/>
           <field name="peso_neto" 
                  attrs="{'invisible':[('picking_relacion', '!=',765),('semielaborado_x', '!=',False)]}" 
-                 optional="show"/>
+                 optional="hide"/>
           <field name="peso_bruto_x" invisible="1"/>
           <field name="peso_neto_x" invisible="1"/>
           <field name="semielaborado_x" invisible="0"/>
@@ -47,27 +48,6 @@
       <field name="arch" type="xml">
         <xpath expr="//page[@name='inventory']/group[@name='inventory']/group[@name='operations']/label[1]" position="before">
           <field name="semielaborado"/>
-        </xpath>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="herencia_module_sp_odoo_studio">
-      <field name="name">herencia stock odoo studio</field>
-      <field name="model">stock.picking</field>
-      <field name="inherit_id" ref="studio_customization.odoo_studio_stock_pi_129deb34-7f46-4af6-a552-8e2fc5d9e56e"/>
-      <field name="arch" type="xml">
-        <xpath expr="//field[@name='product_uom_qty']" position="after">
-          <field name="peso_tara" invisible="1"/>
-          <field name="picking_relacion" invisible="1"/>
-          <field name="peso_bruto" 
-                 attrs="{'column_invisible':[('parent.relacion','!=',765)]}"/>
-          <field name="peso_neto" 
-                 attrs="{'invisible':[('picking_relacion', '!=',765),('semielaborado_x', '!=',False)]}" 
-                 optional="show"/>
-          <field name="peso_bruto_x" invisible="1"/>
-          <field name="peso_neto_x" invisible="1"/>
-          <field name="semielaborado_x" invisible="1"/>
-          <field name="tara" invisible="1"/>
         </xpath>
       </field>
     </record>

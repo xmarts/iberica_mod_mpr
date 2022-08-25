@@ -21,7 +21,7 @@ class Picking(models.Model):
         string="Paquete origen", 
         ondelete='restrict',
         check_company=True,
-        domain="['product_id', 'in', 'package_id.product_id']"
+        domain="['product_id', 'in', 'move_id.package_id.product_id']"
     )
 
     @api.onchange('peso_tara', 'peso_bruto', 'qty_done', 'product_id')

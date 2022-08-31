@@ -19,7 +19,7 @@ class Picking(models.Model):
     package_id = fields.Many2one(
         'stock.quant.package', 
         string="Paquete origen", 
-        ondelete='restrict',
+        #ondelete='restrict',
         check_company=True,
         domain="[('quant_ids.product_id', '=', product_id)]"
     )

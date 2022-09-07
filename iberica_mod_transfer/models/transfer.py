@@ -36,5 +36,5 @@ class StockQuant(models.Model):
     quantity = fields.Float(
         'Cantidad a mano',
         help='Quantity of products in this quant, in the default unit of measure of the product',
-        readonly=True
+        readonly=False
     )

@@ -30,3 +30,11 @@ class ProductTemplate(models.Model):
     peso_caja_presentacion = fields.Float(store=True, digits=(12,3))
     semielaborado = fields.Boolean()
 
+class StockQuant(models.Model):
+    _inherit = 'stock.quant'
+
+    quantity = fields.Float(
+        'Cantidad a mano',
+        help='Quantity of products in this quant, in the default unit of measure of the product',
+        readonly=True
+    )

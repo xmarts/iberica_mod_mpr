@@ -16,13 +16,13 @@ class Picking(models.Model):
     peso_neto_x = fields.Float(default=1.0, store=True, digits=(12,3))
     peso_bruto_x = fields.Float(default=1.0, store=True, digits=(12,3))
     tara = fields.Float(default=1.0, store=True, digits=(12,3))
-    package_id = fields.Many2one(
-        'stock.quant.package', 
-        string="Paquete origen", 
-        ondelete='restrict',
-        check_company=True,
-        domain="['&', ('quant_ids.product_id', '=', product_id), ('location_id', '=', location_id)]"
-    )
+    # package_id = fields.Many2one(
+    #     'stock.quant.package', 
+    #     string="Paquete origen", 
+    #     ondelete='restrict',
+    #     check_company=True,
+    #     domain="['&', ('quant_ids.product_id', '=', product_id), ('location_id', '=', location_id)]"
+    # )
 
     @api.onchange('peso_tara', 'peso_bruto', 'qty_done', 'product_id')
     def _traer_datos(self):
